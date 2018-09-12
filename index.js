@@ -46,12 +46,14 @@ function readdirSync(dir, opts = {}) {
         }
 
         if (opts.only) {
+            filePath = (opts.recursive) ? dir + file : file;
             /* istanbul ignore else  */
             if ((opts.only === 'file' && !stat.isDirectory()) ||
                 (opts.only === 'directory' && !stat.isFile())) {
                 newFiles.push(filePath);
             }
         } else {
+            filePath = (opts.recursive) ? dir + file : file;
             newFiles.push(filePath);
         }
 
